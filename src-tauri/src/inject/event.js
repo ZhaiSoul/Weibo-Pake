@@ -106,6 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const tauri = window.__TAURI__;
   const appWindow = tauri.window.appWindow;
 
+  if (window.location.pathname === '/') {
+    appWindow.setTitle("微博 —— "+window.$CONFIG.user.screen_name);
+  }
+
+
   const topDom = document.createElement('div');
   topDom.id = 'pack-top-dom';
   document.body.appendChild(topDom);
