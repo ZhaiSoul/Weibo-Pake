@@ -126,6 +126,6 @@ jobs:
         prerelease: ${{ inputs.is_pre_release }}
         artifacts: "output/*/*.*"
         tag: ${{ inputs.version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.TOKEN }}
 
     
