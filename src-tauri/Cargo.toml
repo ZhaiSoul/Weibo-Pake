@@ -5,7 +5,7 @@ description = "基于pake(tauri)开发的微博客户端"
 authors = ["ZhaiSoul", "Tw93"]
 license = "MIT"
 repository = "https://github.com/ZhaiSoul/Weibo-Pake"
-default-run = "app"
+default-run = "weibo-pake"
 edition = "2021"
 rust-version = "1.63.0"
 

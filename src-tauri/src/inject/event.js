@@ -105,6 +105,18 @@ function externalTargetLink() {
 document.addEventListener('DOMContentLoaded', () => {
   const tauri = window.__TAURI__;
   const appWindow = tauri.window.appWindow;
+  const LogicalSize = tauri.window.LogicalSize;
+  if (window.location.host !== 'weibo.com') {
+    appWindow.setDecorations(false);
+    appWindow.setSize(new LogicalSize(300, 320));
+    appWindow.center();
+    appWindow.setTitle("Loading...");
+    console.log(document);
+  } else {
+    appWindow.setSize(new LogicalSize(1165, 800));
+    appWindow.center();
+    appWindow.setDecorations(true);
+  }
 
   if (window.location.pathname === '/') {
     appWindow.setTitle("微博 —— "+window.$CONFIG.user.screen_name);

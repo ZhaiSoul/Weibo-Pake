@@ -11,6 +11,16 @@
           "domain": "weibo.com",
           "windows": ["pake"],
           "enableTauriAPI": true
+        },
+        {
+          "domain": "login.sina.com.cn",
+          "windows": ["pake"],
+          "enableTauriAPI": true
+        },
+        {
+          "domain": "s.weibo.com",
+          "windows": ["pake"],
+          "enableTauriAPI": true
         }
       ]
     },
@@ -18,7 +28,7 @@
       "active": false
     },
     "systemTray": {
-      "iconPath": "png/weread_512.png",
+      "iconPath": "png/weibo_512.png",
       "iconAsTemplate": true
     },
     "allowlist": {

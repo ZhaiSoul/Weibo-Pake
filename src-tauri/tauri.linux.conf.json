@@ -1,7 +1,7 @@
 {
   "tauri": {
     "bundle": {
-      "icon": ["png/weread_512.png"],
+      "icon": ["png/weibo_512.png"],
       "identifier": "com.pake.weread",
       "active": true,
       "category": "DeveloperTool",

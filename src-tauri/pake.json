@@ -4,8 +4,8 @@
       "url": "https://weibo.com",
       "transparent": true,
       "fullscreen": false,
-      "width": 1200,
-      "height": 780,
+      "width": 1165,
+      "height": 900,
       "resizable": true,
       "url_type": "web"
     }
