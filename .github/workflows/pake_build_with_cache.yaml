@@ -90,7 +90,7 @@ jobs:
         npm i
         npm run build:mac
         mkdir output/macos
-        cp "src-tauri/target/universal-apple-darwin/release/Weibo.*" "output/macos/"
+        cp "src-tauri/target/universal-apple-darwin/release/bundle/dmg/*.dmg" "output/macos/weibo.dmg"
         cd output/macos
         ls
 
@@ -103,16 +103,8 @@ jobs:
         mkdir output/windows
         cp "src-tauri/target/x86_64-pc-windows-msvc/release/Weibo.exe" "output/windows/weibo.exe"
         cp "src-tauri/target/x86_64-pc-windows-msvc/release/bundle/msi/*.msi" "output/windows/weibo-msi.msi"
-
-    - name: Upload files
-      # arg info: https://github.com/ncipollo/release-action#release-action
-      uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true
-        prerelease: ${{ inputs.is_pre_release }}
-        artifacts: "output/*/*.*"
-        tag: ${{ inputs.version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+        cd output/windows
+        ls
 
     - name: rust cache store
       uses: actions/cache/save@v3
@@ -125,3 +117,15 @@ jobs:
           ~/.cargo/git/db/
           src-tauri/target/
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Upload files
+      # arg info: https://github.com/ncipollo/release-action#release-action
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        prerelease: ${{ inputs.is_pre_release }}
+        artifacts: "output/*/*.*"
+        tag: ${{ inputs.version }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    
