@@ -74,19 +74,32 @@ jobs:
 
     - name: build for Ubuntu
       if: matrix.os == 'ubuntu-20.04'
-      run: npm run build:all-unix
-
+      run: |
+        npm run build:linux
+        mkdir output/linux
+        cp "src-tauri/target/release/bundle/deb/*.deb" "output/linux/weibo.deb"
+        cp "src-tauri/target/release/bundle/appimage/*.AppImage" "output/linux/weibo.AppImage"
+        cd output/linux
+        ls
+  
     - name: build for MacOS
       if: matrix.os == 'macos-latest'
       run: |
         rustup target add aarch64-apple-darwin
-        npm run build:all-unix
+        npm run build:mac
+        mkdir output/macos
+        cp "src-tauri/target/universal-apple-darwin/release/Weibo.*" "output/macos/"
+        cd output/macos
+        ls
 
     - name: build for windows
       if: matrix.os == 'windows-latest'
       shell: pwsh
       run: |
-        npm run build:all-windows
+        npm run build:windows
+        mkdir output/windows
+        cp "src-tauri/target/x86_64-pc-windows-msvc/release/Weibo.exe" "output/windows/weibo.exe"
+        cp "src-tauri/target/x86_64-pc-windows-msvc/release/bundle/msi/*.msi" "output/windows/weibo-msi.msi"
 
     - name: Upload files
       # arg info: https://github.com/ncipollo/release-action#release-action
